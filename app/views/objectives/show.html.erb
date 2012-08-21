@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h3><strong>Objective:</strong>&nbsp&nbsp<%= @objective.content %></h3>
+  <%= link_to 'Edit Objective', edit_objective_path(@objective) %> 
+</p>
+
+<br /><br />
+<h3>Key Results</h3>
+<% @objective.keyresults.each do |keyresult| %>
+  <ul>
+    <li><%= keyresult.content %>, <%= keyresult.quantity %></li>
+   <%= link_to 'Remove Key Result', objective_keyresult_path(@objective,keyresult), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </ul>
+<% end %>
+ 
+<br /><br />
+<h3>Add a Key Result:</h3>
+<%= form_for([@objective, @objective.keyresults.build]) do |f| %>
+  <div class="field">
+    <%= f.text_field :content %>
+  </div>
+    <div class="field">
+    <%= f.label 'Enter Quantitative Goal (if applicable):' %>
+    <%= f.text_field :quantity %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create Key Result" %>
+  </div>
+<% end %>
+ 
+<br />
+
+
+<%= link_to 'Back', objectives_path %>
