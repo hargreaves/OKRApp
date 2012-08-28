@@ -1,0 +1,23 @@
+<h3>Team Objectives and Key Results</h3>
+<br />
+
+<% @users.each do |user| %>
+    <strong><%= user.name %></strong>
+    <br />
+    <ol>
+    <% user.objectives.each do |objective| %>
+    	<li><%= objective.content %></li>
+    	<ul>
+    	<% objective.keyresults.each do |keyresult| %>
+    		<li><%= keyresult.content %></li>
+    	<% end %>
+    	</ul>
+    <% end %>
+    </ol>
+  	<br />
+<% end %>
+
+
+<br />
+
+<%= link_to 'Back', objectives_path %>
