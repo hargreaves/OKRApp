@@ -1,8 +1,8 @@
-<h3>Listing objectives for <%= current_user.name %></h3>
+<h3>Objectives for <%= current_user.name %></h3>
 
   <ol>
 <% @objectives.each do |objective| %>
-    <li><%= link_to objective.content, objective %>&nbsp&nbsp&nbsp<%= link_to 'Add Key Results', objective %>&nbsp&nbsp&nbsp<%= link_to 'Edit', edit_objective_path(objective) %>&nbsp&nbsp&nbsp<%= link_to 'Remove Objective', objective, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    <li><strong><%= link_to objective.content, objective %></strong><br /><%= link_to 'Add Key Results', objective %>&nbsp&nbsp&nbsp<%= link_to 'Edit', edit_objective_path(objective) %>&nbsp&nbsp&nbsp<%= link_to 'Remove Objective', objective, method: :delete, data: { confirm: 'Are you sure?' } %></li>
     <% objective.keyresults.each do |keyresult| %>
   		<ul>
     		<li><%= keyresult.content %></li>		
@@ -11,6 +11,5 @@
 	<br />
 <% end %>
   </ol>
-<br />
 
 <%= link_to 'Add New Objective', new_objective_path %>

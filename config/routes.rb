@@ -14,6 +14,7 @@ devise_scope :user do
   resources :objectives do 
     resources :keyresults
   end
+  resources :teams
   
   root :to => 'objectives#index'
 
